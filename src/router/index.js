@@ -6,9 +6,18 @@ const router=new VueRouter({
     routes:[
         {
             path:"/",
-            redirect:""
+            redirect:"/tuijian"
         },
-        
+        {
+            path:"/tuijian",
+            component:_=>import("@pages/tuijian"),
+            name:"tuijian"
+        },
+        {
+            path:"/youshengshu",
+            component:_=>import("@pages/youshengshu"),
+            name:"youshengshu"
+        },
     ]
 })
 export default router;

@@ -1,11 +1,21 @@
 <template>
-    <div>推荐</div>
+  <div>
+    <Header />
+    <Nav />
+    <Main/>
+  </div>
 </template>
     
 <script>
+import Nav from "@common/components/nav";
+import Main from "@components/tuijian"
 export default {
-    name:"tuijian"
-}
+  name: "tuijian",
+  components: {
+    Nav,
+    Main
+  }
+};
 </script>
 
 <style>
