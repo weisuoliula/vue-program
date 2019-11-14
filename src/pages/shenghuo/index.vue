@@ -1,54 +1,53 @@
 <template>
-  <div class="header">
-    <b v-for="item in headers" :key="item.title">{{item.title}}</b>
-    <div class="header_input">
-      <div class="iconfont icon-sou"></div>
-      <router-link 
-      v-for="item in search_input" :key="item.path"
-      tag="input"
-      :to="item.path"
-      id="search_input"
-      placeholder="搜索"
-      ></router-link>
+  <div class="shenghuo">
+    <div class="header">
+      <v-touch @tap="handletap()" tag="b">〈 情感生活</v-touch>
+      <div class="header_input">
+        <div class="iconfont icon-sou"></div>
+        <input type="text" value id="search_input" placeholder="搜索" />
+      </div>
+      <span>打开App</span>
     </div>
-    <span>打开App</span>
+    <Nav/>
+    <List/>
+    <!-- 二级路由优化缓存 -->
+    <keep-alive>
+       <router-view></router-view>
+    </keep-alive>
+    
   </div>
 </template>
 
 <script>
+import Nav from "@components/nav"
+import List from "@components/list"
 export default {
-  name:"Header",
-  data(){
-    return {
-      headers:[
-        {
-          title:"喜马拉雅",
-        }
-      ],
-      search_input:[
-        {
-          path:"/sousuo"
-        }
-      ]
-     
+    components:{
+        Nav,
+        List
+    },
+    created() {
+      document.title=this.$route.meta.title
+  },
+  methods: {
+    handletap(){
+      this.$router.back()
     }
-  }
+  },
 };
 </script>
 
-<style>
+<style scoped>
 .header{
     height:0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding:0 0.2rem;
+    padding:0 0.1rem;
     position: fixed;
-    top:0;
-    left:0;
     background: #fff;
-    z-index: 1;
-    width:100%
+    width:100%;
+    z-index: 5;
 }
 .header_input{
     display: flex;
@@ -62,7 +61,9 @@ export default {
 .header_input input{
     background: #eff1f4;
     border:0;
-    width:1rem
+    width:1rem;
+    height:0.2rem;
+    font-size:0.1rem
 }
 .header b{
     color:#f86442;

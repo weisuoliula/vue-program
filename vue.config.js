@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
     devServer: {
         proxy: {
-            "/api": {
-                target: "http://39.97.33.178",
+            "/m-revision": {
+                target: "https://m.ximalaya.com",
                 changeOrigin: true
             }
         }
