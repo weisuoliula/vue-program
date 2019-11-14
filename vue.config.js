@@ -10,8 +10,11 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite:{
                     "^/api/":""
-                }
-            }
+                },
+           /*  "/m-revision": {
+                target: "https://m.ximalaya.com",
+                changeOrigin: true
+            } */
         }
     },
     //别名配置

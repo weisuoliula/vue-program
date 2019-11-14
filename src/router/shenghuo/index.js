@@ -1,0 +1,32 @@
+export default {
+    path:"/shenghuo",
+    component:_=>import("@pages/shenghuo"),//_代表当前函数不传参数,()传参
+    name:"shenghuo",
+    children:[
+        {
+            path:"/shenghuo",
+            redirect:"/shenghuo/shenghuotwo"
+        },
+        {
+            path:"shenghuotwo",
+            component:_=>import("@components/shenghuotwo"),
+            meta:{
+                title:"情感生活"
+            }
+        },
+        {
+            path:"zuiduobofang",
+            component:_=>import("@components/zuiduobofang"),
+            meta:{
+                title:"情感生活"
+            }
+        },
+        {
+            path:"zuijingengxin",
+            component:_=>import("@components/zuijingengxin"),
+            meta:{
+                title:"情感生活"
+            }
+        },
+    ]
+}

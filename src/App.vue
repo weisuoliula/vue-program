@@ -4,6 +4,7 @@
     <router-view></router-view>
   </div>
 </template>
+
 <script>
 import Vue from 'vue';
 import { Swipe, SwipeItem } from 'vant';
@@ -21,6 +22,10 @@ export default({
   width: 100%;
   
 }
+
+
+
+
 /* .page{
   height: 100%;
   position: absolute;
