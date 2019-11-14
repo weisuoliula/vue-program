@@ -2,7 +2,9 @@
   <div>
     <Header />
     <Nav />
-    <Main/>
+    <keep-alive>
+   <router-view></router-view>
+   </keep-alive>
   </div>
 </template>
 <script>

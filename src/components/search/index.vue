@@ -1,10 +1,10 @@
 <template>
   <ul class="search_con">
-    <li>
+    <li v-for="(item,index) in conList" :key="index">
       <span>1</span>
-      <span>周建龙</span>
+      <span>{{item.word}}</span>
     </li>
-    <li>
+    <!-- <li>
       <span>2</span>
       <span>周建龙</span>
     </li>
@@ -32,13 +32,48 @@
     <li>
       <span>1</span>
       <span>周建龙</span>
-    </li>
+    </li>-->
   </ul>
 </template>
 
 <script>
+import { searchconrecommendapi } from "@api/recommend";
 export default {
-    name:"Searchcon"
+  name: "Searchcon",
+  props: ["flag",'activeIndex'],
+  data() {
+    return {
+      conList: {
+        listHot: [],
+        listSound: [],
+        listComment: []
+      }
+    };
+  },
+  created() {
+    //console.log(this.flag,this.activeIndex)
+    this.handlesearchconHot(-1);
+    this.handlesearchconSound(3);
+    this.handlesearchconComment(12);
+  },
+  methods: {
+    async handlesearchconHot(flag) {
+      let data = await searchconrecommendapi(flag);
+      this.listHot = data.hotWordResultList;
+      // console.log(this.listHot);
+    },
+    async handlesearchconSound(flag) {
+      let data = await searchconrecommendapi(flag);
+      this.listSound = data.hotWordResultList;
+      //console.log(this.listSound);
+    },
+    async handlesearchconComment(flag) {
+      let data = await searchconrecommendapi(flag);
+      this.listSound = data.hotWordResultList;
+      //console.log(this.listSound);
+    },
+    
+  }
 };
 </script>
 

@@ -1,5 +1,6 @@
 import Vue from "vue";
-import Head from "./head"
+import Head from "./head";
+
 
 
 let componentMap = [

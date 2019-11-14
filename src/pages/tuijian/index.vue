@@ -2,18 +2,20 @@
   <div>
     <Header />
     <Nav />
-    <Main/>
+    <keep-alive>
+   <router-view></router-view>
+   </keep-alive>
   </div>
 </template>
     
 <script>
 import Nav from "@common/components/nav";
-import Main from "@components/tuijian"
+import Main from "@components/tuijian";
 export default {
   name: "tuijian",
   components: {
     Nav,
-    Main
+   /*  Main */
   }
 };
 </script>

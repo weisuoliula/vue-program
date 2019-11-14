@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import tuijian_ from "./tuijian";
+import search from "./search";
 Vue.use(VueRouter);
 const router=new VueRouter({
     mode:"hash",
@@ -8,16 +10,8 @@ const router=new VueRouter({
             path:"/",
             redirect:"/tuijian"
         },
-        {
-            path:"/tuijian",
-            component:_=>import("@pages/tuijian"),
-            name:"tuijian"
-        },
-        {
-            path:"/youshengshu",
-            component:_=>import("@pages/youshengshu"),
-            name:"youshengshu"
-        },
+        tuijian_,
+        search
     ]
 })
 export default router;

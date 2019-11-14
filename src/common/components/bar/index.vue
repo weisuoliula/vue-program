@@ -6,19 +6,19 @@
       </figure>
       <figure>
         <img src="http://fdfs.xmcdn.com/group57/M0A/3B/D0/wKgLgVyQuqWRZsJtAAAnr8tg4rs307.png" alt />
-        <figcaption>排行榜</figcaption>
+        <figcaption>听单</figcaption>
       </figure>
       <figure>
         <img src="http://fdfs.xmcdn.com/group63/M01/B2/54/wKgMcl0Arv-gbwo4AABqDmN0C8Q090.png" alt />
-        <figcaption>排行榜</figcaption>
+        <figcaption>易烊千玺</figcaption>
       </figure>
       <figure>
         <img src="http://fdfs.xmcdn.com/group56/M09/3B/BD/wKgLgFyQujLCAVYRAAAuwA7DZMg198.png" alt />
-        <figcaption>排行榜</figcaption>
+        <figcaption>直播</figcaption>
       </figure>
       <figure>
         <img src="http://fdfs.xmcdn.com/group60/M02/18/F4/wKgLeVziZxHRlc-lAAAO9ZkPU-I489.png" alt />
-        <figcaption>全部分类</figcaption>
+        <figcaption>分类</figcaption>
       </figure>
     </div>
  
@@ -42,6 +42,7 @@ export default {
   display: flex;
   margin: 0 auto;
   margin-top: 0.15rem;
+  border-bottom: none;
 }
 
 .main .nav2 figure {

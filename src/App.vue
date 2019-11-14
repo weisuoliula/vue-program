@@ -1,19 +1,26 @@
 <template>
   <div id="app">
-    <Tuijian/>
+    <!-- <Tuijian/> -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
+import Vue from 'vue';
+import { Swipe, SwipeItem } from 'vant';
+Vue.use(Swipe).use(SwipeItem);
 import Tuijian from "@pages/tuijian"
 export default({
     name:"App",
     components:{
-        Tuijian
+        /* Tuijian */
     }
 })
 </script>
 <style lang="scss">
-
+#app{
+  width: 100%;
+  
+}
 /* .page{
   height: 100%;
   position: absolute;
