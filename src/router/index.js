@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import qinggan from './qinggan'
-import tuijian from './tuijian'
-import youshusheng from './youshusheng'
-import sousuo from './sousuo'
+import shenghuo from './shenghuo'
+import xiangting from './xiangting'
 Vue.use(VueRouter)
 
 
@@ -12,12 +11,12 @@ const router = new VueRouter({
   routes:[
     {
       path:"/",
-      redirect:"/qinggan"
+      redirect:"/qinggan",
+      
     },
     qinggan,
-    tuijian,
-    youshusheng,
-    sousuo,
+    shenghuo,
+    xiangting,
     {
       path:"/login",
       component:_=>import("@pages/login"),//_代表当前函数不传参数,()传参
@@ -26,15 +25,15 @@ const router = new VueRouter({
   ]
 })
 
-router.beforeEach((to,from,next)=>{
-  if(to.path !="/login" && to.meta.requiredAuth){
-    if(localStorage.getItem("token")){
-      next();
-    }else{
-      next({name:"login",params:{to:to.path}})
-    }
-  }else{
-    next()
-  }
-})
+// router.beforeEach((to,from,next)=>{
+//   if(to.path !="/login" && to.meta.requiredAuth){
+//     if(localStorage.getItem("token")){
+//       next();
+//     }else{
+//       next({name:"login",params:{to:to.path}})
+//     }
+//   }else{
+//     next()
+//   }
+// })
 export default router

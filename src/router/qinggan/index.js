@@ -10,6 +10,9 @@ export default {
         {
             path:"main",
             component:_=>import("@components/main"),
-        }
+            meta:{
+                title:"情感"
+            }
+        },
     ]
 }

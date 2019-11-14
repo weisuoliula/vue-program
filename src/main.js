@@ -4,8 +4,11 @@ import router from "./router"
 import "@common/components"
 import VueTouch from "vue-touch";
 import store from './store'
-Vue.use(VueTouch,{name:"v-touch"});
+import { Swipe, SwipeItem } from 'vant';
 
+
+Vue.use(Swipe).use(SwipeItem);
+Vue.use(VueTouch,{name:'v-touch'})
 
 Vue.config.productionTip = false
 
