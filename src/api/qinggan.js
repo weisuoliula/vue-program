@@ -10,6 +10,7 @@ export const  qinggan =()=>http({
 })
 
 export const  shenghuotwo =(page)=>http({
+        
         method:"get",
         url:"/m-revision/page/category/queryCategoryAlbumsByPage?categoryCode=qinggan&subCategoryCode=qinggan&page="+page+"&pageSize=30&sort=0",
         data:{
