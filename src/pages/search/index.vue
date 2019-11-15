@@ -120,7 +120,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .box {
   padding: 0 0.14rem;
   display: flex;

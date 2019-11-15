@@ -3,17 +3,20 @@ const path = require('path');
 module.exports = {
     devServer: {
         proxy: {
-            "/api": {
+            /* "/api": {
                 target: "https://m.ximalaya.com",
                 //https://m.ximalaya.com
                 changeOrigin: true,
                 pathRewrite: {
                     "^/api/": ""
-                },
-                /*  "/m-revision": {
-                     target: "https://m.ximalaya.com",
-                     changeOrigin: true
-                 } */
+                } */
+                 "/api": {
+                    target: "https://m.ximalaya.com",
+                    changeOrigin: true,
+                    pathRewrite: {
+                        "^/api/":""
+                    } 
+                } 
             }
         },
         //别名配置
@@ -33,5 +36,5 @@ module.exports = {
                 }
             }
         }
+
     }
-}
