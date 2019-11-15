@@ -10,11 +10,7 @@ export const soundbookrecommendapi=()=>http({
     url:"/api/m-revision/page/index/queryIndexCategoryTabContent?moduleKey=youshengshu"
 //https://m.ximalaya.com/m-revision/page/index/queryIndexCategoryTabContent?moduleKey=youshengshu
 })
-/* export const searchnavrecommendapi=()=>http({
-    method:'get',
-    url:"/api/hotWordBillboardCategory"
-//https://m.ximalaya.com/hotWordBillboardCategory
-}) */
+
 export const searchconrecommendapi=(flag)=>http({
     method:'get',
     url:"/api/hotWordBillboard/list/2.0?categoryId="+flag+"&size=24"
