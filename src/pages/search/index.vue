@@ -1,53 +1,69 @@
 <template>
   <div class="box">
     <div class="search">
-      <input type="text" />
+      <input type="text" v-model="value" v-on:keyup.enter="submit" />
       <p class="iconfont iconsousuo"></p>
-      <span>取消</span>
+      <v-touch tag="span" @tap="cancleclick()">取消</v-touch>
     </div>
-    <div class="nav11">
-      <p>搜索历史</p>
-      <i class="iconfont iconshanchu"></i>
-    </div>
-    <div class="search_history">
-      <p>新概念英语</p>
-      <p>郭德纲</p>
-    </div>
-    <div class="main_">
-      <ul class="nav2">
-        <router-link
-          tag="li"
-          v-for="(item,index) in navs"
-          :key="index"
-          :to="item.path"
-        >{{item.text}}</router-link>
-        <!-- <li>有声书</li>
-                <li>相声评书</li>
-                <li>儿童</li>
-                <li>历史</li>
-                <li>音乐</li>
-                <li>人文</li>
-                <li>商业财经</li>
-        <li>其他</li>-->
+    <div class="search_fade" v-show="flag">
+      <div class="fade_con">
+        <img
+          src="http://imagev2.xmcdn.com/group65/M00/FE/07/wKgMdF1dz9jBTxzaAAHQytNvIsc785.jpg!op_type=3&columns=86&rows=86&magick=png"
+          alt
+        />
+        <div class="fade_con_right">
+          <h4>{{listfade.keyword}}</h4>
+          <div>
+            <p>{{listfade.category}}</p>
+            <p>{{listfade.play}}亿</p>
+            <p>{{listfade.tracks}}集</p>
+          </div>
+        </div>
+      </div>
+      <ul class="fade_list">
+        <li v-for="(item,index) in listfadelist" :key="index">{{item.keyword}}</li>
       </ul>
-      <!-- --------------------------切换显示内容--------------------------------- -->
-      <router-view></router-view>
+    </div>
+    <div v-show="flag1">
+      <div class="nav11">
+        <p>搜索历史</p>
+        <i class="iconfont iconshanchu"></i>
+      </div>
+      <div class="search_history">
+        <p v-for="(item,index) in record" :key="index">{{item}}</p>
+      </div>
+      <div class="main_">
+        <ul class="nav2">
+          <router-link
+            tag="li"
+            v-for="(item,index) in navs"
+            :key="index"
+            :to="item.path"
+          >{{item.text}}</router-link>
+        </ul>
+        <!-- --------------------------切换显示内容--------------------------------- -->
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { searchnavrecommendapi } from "@api/recommend";
-/* import { searchconrecommendapi } from "@api/recommend"; */
-import searchcon from "@components/search";
+import { searchnavrecommendapi, searchrecommendapi } from "@api/recommend";
+import { throttle } from "@utils/throttle";
+
 export default {
   name: "search",
-  components: {
-    searchcon
-  },
   data() {
     return {
-      //searchnavList: [],
+      value: "",
+      listfade: {},
+      listfadelist: [],
+      flag: 0,
+      flag1: 1,
+      record: [],
       navs: [
         {
           text: "热门",
@@ -55,11 +71,11 @@ export default {
         },
         {
           text: "有声书",
-          path: "/search/hot"
+          path: "/search/sound"
         },
         {
           text: "相声评书",
-          path: "/hot"
+          path: "/search/xiangshengcomment"
         },
         {
           text: "儿童",
@@ -69,53 +85,54 @@ export default {
           text: "历史",
           path: "/hot"
         },
-         {
+        {
           text: "音乐",
           path: "/hot"
         },
-         {
+        {
           text: "人文",
           path: "/hot"
         },
-         {
+        {
           text: "商业财经",
           path: "/hot"
         },
-         {
+        {
           text: "其他",
           path: "/hot"
         }
       ]
-      //searchconList: []
     };
   },
-  created() {
-    //console.log("000");
-    //this.handlesearchnav();
-    //this.handlesearchcon(this.flag);
+  watch: {
+    value(newVal) {
+      throttle(async () => {
+        let data = await searchrecommendapi(newVal);
+        if (data.data.result.albumResultList) {
+          this.flag = 1;
+          this.flag1 = 0;
+        }
+        this.listfade = data.data.result.albumResultList[0];
+        this.listfadelist = data.data.result.queryResultList;
+        if (data.data.result.albumResultList == "") {
+          this.listfade = [];
+          this.flag = 0;
+          this.flag1 = 1;
+        }
+      }, 300);
+
+      //console.log(this.listfadelist)
+    }
   },
+  created() {},
   methods: {
-    /* navclick(index) {
-      //console.log('000')
-      this.flag = index;
-      //console.log(this.flag)
-      switch (index){
-        case -1:
-          this.activeIndex = "listHot";
-          break;
-        case 3:
-          this.activeIndex = "listSound";
-          break;
-        case 12:
-          this.activeIndex = "listComment";
-          break;
-      }
-    }, */
-    /* async handlesearchnav() {
-      let data = await searchnavrecommendapi();
-      this.searchnavList = data.category;
-      //console.log(this.tuijian_list);
-    }, */
+    cancleclick() {
+      this.$router.push("/tuijian");
+    },
+    submit() {
+      this.record.push(this.value);
+      //console.log(this.record)
+    }
   }
 };
 </script>
@@ -156,6 +173,66 @@ export default {
 
 .iconfont.iconsousuo {
   font-size: 0.2rem;
+}
+.box .fade_con {
+  padding: 0.15rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box .fade_con img {
+  margin-right: 0.1rem;
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.box .fade_con .fade_con_right {
+  flex: 1;
+  color: #a3a3ac;
+}
+.box .fade_con .fade_con_right > div {
+  flex: 1;
+  color: #a3a3ac;
+  display: flex;
+  align-items: center;
+  margin-top: 0.05rem;
+}
+.box .fade_con .fade_con_right > div h4 {
+  padding-bottom: 4px;
+  line-height: 20px;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  font-size: 0.14rem;
+  color: #40404c;
+}
+.box .fade_con .fade_con_right > div > p:nth-of-type(1) {
+  border: 1px solid #a3a3ac;
+  border-radius: 0.06rem;
+  margin-right: 0.15rem;
+  padding: 0 0.045rem;
+  height: 0.18rem;
+  line-height: 0.18rem;
+  font-size: 0.09rem;
+  text-align: center;
+}
+.box .fade_con .fade_con_right > div > p:nth-of-type(2) {
+  font-family: "PingFangSC-Regular";
+  font-size: 0.12rem;
+  color: #a3a3ac;
+  line-height: 0.16rem;
+  margin-right: 0.15rem;
+}
+.box .fade_con .fade_con_right > div > p:nth-of-type(3) {
+  font-family: " PingFangSC-Regular";
+  font-size: 0.12rem;
+  color: #a3a3ac;
+  line-height: 0.16rem;
+}
+.box .fade_list > li {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  color: #40404c;
+  font-size: 0.14rem;
+  border-bottom: 0.01rem solid #e1e1e1;
 }
 
 /*---------------------搜索历史导航--------------------------*/
@@ -217,38 +294,4 @@ export default {
   font-size: 0.18rem;
   color: #000;
 }
-/* .search_con {
-  width: 100%;
-}
-.search_con > li {
-  width: 100%;
-  display: flex;
-  height: 0.45rem;
-  line-height: 0.45rem;
-  border-bottom: 0.005rem solid #f1efef;
-}
-.search_con > li > span:nth-of-type(1) {
-  display: inline-block;
-  width: 0.2rem;
-  text-align: center;
-}
-.search_con > li:nth-of-type(1) > span:nth-of-type(1) {
-  color: #ff0b0b;
-}
-.search_con > li:nth-of-type(2) > span:nth-of-type(1) {
-  color: #f86442;
-}
-.search_con > li:nth-of-type(3) > span:nth-of-type(1) {
-  color: #f8a642;
-}
-.search_con > li:nth-of-type(4) > span:nth-of-type(1) {
-  color: #dabda6;
-}
-.search_con > li > span:nth-of-type(2) {
-  flex: 1;
-  display: inline-block;
-  padding-left: 0.1rem;
-  color: #333;
-  font-size: 0.16rem;
-} */
 </style>

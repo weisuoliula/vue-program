@@ -1,6 +1,6 @@
 <template>
   <ul class="search_con">
-    <li v-for="(item,index) in listHot" :key="index">
+    <li v-for="(item,index) in listxiangsheng" :key="index">
       <span>{{index+1}}</span>
       <span>{{item.word}}</span>
     </li>
@@ -10,20 +10,19 @@
 <script>
 import { searchconrecommendapi } from "@api/recommend";
 export default {
-  name: "Searchhotcon",
+  name: "SearchSoundcon",
   data() {
     return {
-      listHot: []
+      listxiangsheng: []
     };
   },
   created() {
-    this.handlesearchconHot(-1);
+    this.handlesearchconHot(12);
   },
   methods: {
     async handlesearchconHot(flag) {
       let data = await searchconrecommendapi(flag);
-      this.listHot = data.hotWordResultList;
-      // console.log(this.listHot);
+      this.listxiangsheng = data.hotWordResultList;
     }
   }
 };

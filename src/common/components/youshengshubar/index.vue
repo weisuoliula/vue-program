@@ -1,11 +1,12 @@
 <template>
   <div class="boxsound">
-    <van-swipe @change="onChange" class="soundImg">
+    <van-swipe @change="onChange" class="soundImg" :autoplay="1500" indicator-color="white">
       <van-swipe-item v-for="(item,index) in tuijian_list" :key="index">
         <img :src="item.adFocusPictureDetail.cover" alt />
       </van-swipe-item>
      <!--  <div class="custom-indicator" slot="indicator">{{ current + 1 }}/4</div> -->
     </van-swipe>
+   
     <div class="nav2">
       <figure>
         <img src="http://fdfs.xmcdn.com/group63/M03/00/EF/wKgMclz13MPBZzrTAACa07xW7PU710.png" alt />
@@ -57,7 +58,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .main .boxsound{
   margin-top: 0.08rem;
 }

@@ -3,13 +3,6 @@ const path = require('path');
 module.exports = {
     devServer: {
         proxy: {
-            /* "/api": {
-                target: "https://m.ximalaya.com",
-                //https://m.ximalaya.com
-                changeOrigin: true,
-                pathRewrite: {
-                    "^/api/": ""
-                } */
                  "/api": {
                     target: "https://m.ximalaya.com",
                     changeOrigin: true,

@@ -6,15 +6,22 @@ export default {
         flag: true,
         requiredAuth: false
     },
-    children: [{
-        path: "hot",
-        // redirect:"/tuijian/tuijian_main"
-        component: _ => import("@components/search")
-    }, 
-    {
-        path: "",
-        // redirect:"/tuijian/tuijian_main"
-        component: _ => import("@components/search")
-    },
-]
+    children: [
+        {
+            path: "/search",
+            redirect:"/search/hot"
+        },
+        {
+            path: "hot",
+            component: _ => import("@components/search")
+        },
+        {
+            path: "sound",
+            component: _ => import("@components/search/sound")
+        },
+        {
+            path: "xiangshengcomment",
+            component: _ => import("@components/search/xiangshengcomment")
+        },
+    ]
 }

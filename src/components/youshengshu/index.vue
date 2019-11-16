@@ -55,10 +55,10 @@ export default {
     };
   },
   created() {
-    this.sounBooklist();
+    this.soundBooklist();
   },
   methods: {
-    async sounBooklist() {
+    async soundBooklist() {
       let data = await soundbookrecommendapi();
       this.soundBook_list = data.data.moduleContent.moduleRankDatas;
      /*  this.totlList = this.soundBook_list.albumBriefDetailInfos;
@@ -74,7 +74,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main {
   width: 100%;
   height: 100%;

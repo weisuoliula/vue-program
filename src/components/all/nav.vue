@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
     .nav1 {
     width: 100%;
     height: 0.34rem;

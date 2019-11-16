@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav1">
+  <ul class="nav11">
     <router-link
         tag="li"
         v-for="item in nav"
@@ -57,7 +57,7 @@ export default {
         {
           id: 6,
           text: "情感",
-          path: "/tuijian_main"
+          path: "/qinggan"
         },
         {
           id: 7,
@@ -80,8 +80,8 @@ export default {
 };
 </script>
 
-<style>
-.nav1 {
+<style scoped>
+.nav11 {
   width: 100%;
   height: 0.34rem;
   white-space: nowrap;
@@ -100,13 +100,13 @@ export default {
   display: none;
 }
 
-.nav1 > li {
+.nav11 > li {
   flex: 1;
   font-size: 0.12rem;
   padding: 0.07rem 0.125rem;
   color: #72727b;
 }
-.nav1 .router-link-active {
+.nav11 .router-link-active {
   font-size: 0.18rem;
 }
 

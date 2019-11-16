@@ -33,9 +33,7 @@ export default {
 };
 </script>
 
-<style>
-
-
+<style scoped>
 .main .nav2 {
   width: 3.08rem;
   height: 0.54rem;
