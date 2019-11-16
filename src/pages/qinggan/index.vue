@@ -3,7 +3,7 @@
      <div class="header">
         <b>喜马拉雅</b>
         <div class="header_input">
-            <div class="iconfont icon-sou"></div>
+            <div class="iconfont iconsousuo"></div>
             <input type="text" value="" id="search_input" placeholder="搜索">
         </div>
         <span>打开App</span>
@@ -85,7 +85,7 @@ export default {
     display: block;
     color:#f86442
 }
-.iconfont.icon-sou{
+.iconfont.iconsousuo{
     font-size:0.2rem;
 }
 
@@ -118,5 +118,8 @@ export default {
 }
 .nav p{
     border: 1px solid #ddd;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 </style>

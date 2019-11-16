@@ -24,8 +24,7 @@
     <!-- 上传用户 -->
     <div class="open">
         <p>
-            <img
-                src="//imagev2.xmcdn.com/group69/M08/68/E6/wKgMeV29iaiSiU-QAAGQoFwfrYs359.jpg!op_type=3&columns=144&rows=144&magick=webp">
+            <img :src="'//imagev2.xmcdn.com/'+datail.cover">
             <span>打开APP，完整收听</span>
         </p>
     </div>
@@ -34,39 +33,10 @@
     </div>
     <div class="list">
         <ul>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
+            <li v-for="(item,index) in list" :key="index">
+                <routerLink :to="'/datail/'+item.id" tag="a">{{item.trackInfo.title}}</routerLink>
             </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
-            <li>
-                <a href="javascript:void(0)">做自己喜欢的事，慢一点也没关系</a>
-            </li>
+           
         </ul>
         <p>加载更多</p>
     </div>
@@ -74,20 +44,34 @@
 </template>
 
 <script>
-import {xiangting} from "@api/qinggan"
+import {xiangting,xiangtingtwo} from "@api/qinggan"
 export default {
     name:"xiangting",
     props:["id"],
     data() {
         return {
-            datail:{}
+            datail:[],
+            track:"track",
+            list:[]
         }
     },
-    async created() {
-        let data= await xiangting(this.id)
-        console.log(data)
-        this.datail=data.data.albumBriefDetailInfos[2].albumInfo
-    }
+    created() {
+       this.handleCb()
+       this.handleCbtwo()
+    },
+    methods: {
+       async handleCb(){
+            let data= await xiangting(this.id,this.track)
+            // console.log(data)
+            this.datail=data.data.albumDetailInfo.albumInfo
+       },
+       async handleCbtwo(){
+           let data=await xiangtingtwo(this.id)
+           console.log(data)
+           this.list=data.data.trackDetailInfos
+       }
+        
+    },
     
 }
 </script>
@@ -210,6 +194,13 @@ export default {
 }
 .list li a{
     color: #000;
+    font-size: 16px;
+    display: block;
+    height: 0.5rem;
+    white-space: nowrap;
+    width: 3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .list p{
     margin:0 auto;

@@ -71,6 +71,9 @@ export default {
     line-height: 0.4rem;
     color: #000;
 }
+.BYM_1 p{
+  font-size:0.12rem
+}
 .jiazai{
   height:0.3rem;
   width:80%;

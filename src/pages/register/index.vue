@@ -1,19 +1,19 @@
 <template>
-  <div class="login">
+  <div class="register">
     <div class="header">
       <ul>
-        <li>登陆账号</li>
-        <v-touch @tap="handleZc()" tag="a">注册</v-touch>
+        <li>注册账号</li>
+        <v-touch @tap="handleDl()" tag="a">登陆</v-touch>
       </ul>
     </div>
     <div class="main">
-      <input type="text" placeholder="登陆账号" class="input_name" v-model="name" />
-      <input type="password" placeholder="登陆密码" class="input_password" v-model="pwd" />
+      <input type="text" placeholder="注册账号" class="input_name" v-model="name" />
+      <input type="password" placeholder="注册密码" class="input_password" v-model="pwd" />
     </div>
     <div class="footer">
-      <v-touch @tap="handleTap()" tag="a">登陆</v-touch>
+      <v-touch @tap="handleTap()" tag="a">注册</v-touch>
     </div>
-     <div class="loglog">
+    <div class="loglog">
       <div class="log"></div>
       <div class="log_2"></div>
     </div>
@@ -21,9 +21,10 @@
 </template>
 
 <script>
-import {login} from "@api/qinggan"
+import axios from "axios";
+import { login, register } from "@api/qinggan";
 export default {
-  name: "login",
+  name: "register",
   data() {
     return {
       name: "",
@@ -31,19 +32,21 @@ export default {
     };
   },
   methods: {
-   async handleTap() {
-     let data =await login(this.name,this.pwd)
-     if(data.length && this.name && this.pwd){
-       alert("登陆成功");
-       this.$router.push("/tuijian")
-     }else{
-       alert("登陆失败")
-       this.name="";
-       this.pwd=""
-     }
+    async handleTap() {
+      if (this.name == "" && this.pwd == "") {
+        alert("账号密码不能为空");
+      } else {
+        let data = await login(this.name);
+        if (data.length) {
+          alert("账号已注册");
+        } else {
+          await register(this.name, this.pwd);
+          alert("注册成功");
+        }
+      }
     },
-    handleZc(){
-      this.$router.push("/register")
+    handleDl() {
+      this.$router.push("/login");
     }
   }
 };
@@ -51,6 +54,9 @@ export default {
 
 <style scoped>
 .register {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
   overflow: hidden;
 }
 .header {
@@ -98,21 +104,22 @@ export default {
   font-size: 0.16rem;
   border-radius: 0.05rem;
 }
-.loglog{
+.loglog {
   position: relative;
   overflow: hidden;
 }
-.log{
-  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_logo_f90f028.png) no-repeat center;
-  background-size:1.6rem 0.4rem;
-  width:100%;
+.log {
+  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_logo_f90f028.png)
+    no-repeat center;
+  background-size: 1.6rem 0.4rem;
+  width: 100%;
   height: 1rem;
   position: absolute;
 }
-.log_2{
+.log_2 {
   height: 2.94rem;
-  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_bg_2b1fa03.png) no-repeat center;
+  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_bg_2b1fa03.png)
+    no-repeat center;
   background-size: cover;
-  
 }
 </style>
