@@ -49,7 +49,9 @@ export default {
     bottom:0;
     padding-top:1.3rem;
     height:100%;
-
+}
+.BYM{
+  
 }
 .BYM a{
     display: flex;
@@ -71,6 +73,9 @@ export default {
     line-height: 0.4rem;
     color: #000;
 }
+.BYM_1 p{
+  font-size:0.12rem
+}
 .jiazai{
   height:0.3rem;
   width:80%;
@@ -80,6 +85,6 @@ export default {
   line-height: 0.3rem;
   border-radius: 0.5rem;
   margin: auto;
-  color: #fff
+  color: #fff;
 }
 </style>

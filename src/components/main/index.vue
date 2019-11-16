@@ -26,7 +26,7 @@
         <a href="javascript:void(0)">
           <div class="Audio_1">
             <img src="//imagev2.xmcdn.com/group56/M07/06/66/wKgLgFx2ZZei-GuCAAVp2JonAv8269.jpg!op_type=3&columns=144&rows=144&magick=webp"/>
-            <div class="iconfont icon-bofangkaishishipinyuanxingxianxing">1444万播放</div>
+            <div class="iconfont iconbofang">1444万播放</div>
           </div>
           <p>不再让你孤单</p>
         </a>
@@ -35,7 +35,7 @@
             <img
               src="//imagev2.xmcdn.com/group32/M0B/94/22/wKgJUFn5dnSSgFDzAAEvbUVduEo979.jpg!op_type=3&columns=144&rows=144&magick=webp"
             />
-            <div class="iconfont icon-bofangkaishishipinyuanxingxianxing">999万播放</div>
+            <div class="iconfont iconbofang">999万播放</div>
           </div>
           <p>与泥相遇，最暖时光与你</p>
         </a>
@@ -44,7 +44,7 @@
             <img
               src="//imagev2.xmcdn.com/group56/M07/06/66/wKgLgFx2ZZei-GuCAAVp2JonAv8269.jpg!op_type=3&columns=144&rows=144&magick=webp"
             />
-            <div class="iconfont icon-bofangkaishishipinyuanxingxianxing">188.5万播放</div>
+            <div class="iconfont iconbofang">188.5万播放</div>
           </div>
           <p>高情商恋爱课</p>
         </a>
@@ -185,7 +185,7 @@ export default {
 .Audio_1 {
   position: relative;
 }
-.iconfont.icon-bofangkaishishipinyuanxingxianxing {
+.iconfont.iconbofang {
   position: absolute;
   bottom: 0;
   left: 0;
