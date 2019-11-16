@@ -14,6 +14,7 @@ export const  qinggan =()=>http({
  * 情感生活二级路由
  */
 export const  shenghuotwo =(page)=>http({
+        
         method:"get",
         url:"/api/m-revision/page/category/queryCategoryAlbumsByPage?categoryCode=qinggan&subCategoryCode=qinggan&page="+page+"&pageSize=30&sort=0",
         data:{
