@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     handletap(){
-      this.$router.back()
+      this.$router.push("/qinggan/main")
     }
   },
 };

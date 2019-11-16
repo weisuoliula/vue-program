@@ -5,7 +5,7 @@
                 <img :src="'//imagev2.xmcdn.com/'+item.albumInfo.cover">
                 <div class="BYM_1">
                     <b>{{item.albumInfo.title}}</b>
-                    <p>{{item.albumInfo.shortIntro}}</p>
+                    <p class="overflow">{{item.albumInfo.shortIntro}}</p>
                     <p>{{item.albumInfo.id}}播放</p>
                 </div>
             </router-link>
@@ -50,9 +50,6 @@ export default {
     padding-top:1.3rem;
     height:100%;
 }
-.BYM{
-  
-}
 .BYM a{
     display: flex;
     height:1.23rem;
@@ -60,21 +57,28 @@ export default {
     align-items: center;
     font-size: 0.12rem;
     color: #72727b;
+    overflow: hidden;
 }
 .BYM a img{
     width: 0.9rem;
-    height:0.9rem
+    height:0.9rem;
+    flex-shrink: 0
 }
 .BYM_1{
-    padding-left: 0.1rem;
+    padding:0.1rem 
 }
 .BYM_1 b{
     font-size: 0.14rem;
-    line-height: 0.4rem;
+    line-height: 0.2rem;
     color: #000;
 }
+.overflow{
+  width: 2rem;
+  height:0.5rem;
+  overflow: hidden;
+}
 .BYM_1 p{
-  font-size:0.12rem
+  font-size:0.12rem;
 }
 .jiazai{
   height:0.3rem;
