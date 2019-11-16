@@ -52,7 +52,7 @@ export default {
 
 }
 .BYM a{
-    display: flex;
+   display: flex;
     height:1.23rem;
     padding: 0 0.1rem;
     align-items: center;

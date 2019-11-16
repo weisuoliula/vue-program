@@ -57,7 +57,7 @@ export default {
         {
           id: 6,
           text: "情感",
-          path: "/qinggan"
+          path: "/qinggan/main"
         },
         {
           id: 7,
