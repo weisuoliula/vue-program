@@ -33,15 +33,18 @@ export default {
   },
   methods: {
     async handleTap() {
-      if (this.name == "" && this.pwd == "") {
+      if (this.name == "" || this.pwd == "") {
         alert("账号密码不能为空");
       } else {
         let data = await login(this.name);
         if (data.length) {
           alert("账号已注册");
+          this.name="";
+          this.pwd=""
         } else {
           await register(this.name, this.pwd);
           alert("注册成功");
+          this.$router.push("/login");
         }
       }
     },

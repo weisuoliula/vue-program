@@ -4,6 +4,6 @@ export default {
     name:"shopping",
     props:true,
     meta: {
-        requiredAuth: true
+        requiredAuth: false
     }
 }

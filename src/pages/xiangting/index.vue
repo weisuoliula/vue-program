@@ -40,6 +40,10 @@
         </ul>
         <p>加载更多</p>
     </div>
+     <div class="loglog">
+      <div class="log"></div>
+      <div class="log_2"></div>
+    </div>
 </div>
 </template>
 
@@ -121,7 +125,9 @@ export default {
 /* nav */
 .nav{
     height:1.55rem;
-    background: rgba(121, 3, 3, 0.212);
+    -background: rgba(121, 3, 3, 0.212);
+     background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_bg_2b1fa03.png)
+    no-repeat center;
     display: flex;
     padding-left:0.2rem;
     align-items: center;
@@ -134,7 +140,7 @@ export default {
     margin-left:0.2rem
 }
 .nav_2 p{
-    color:#fff;
+    color:#c33;
     font-size:0.16rem
 }
 .nav_2 h6 b{
@@ -146,7 +152,7 @@ export default {
     border-radius: 0.2rem;
     padding:0.03rem;
     margin-left:0.1rem;
-    background: #fff;
+    -background: #fff;
 
 }
 .open{
@@ -165,6 +171,7 @@ export default {
     border-radius: 0.5rem;
     color: #fff;
     display: flex;
+    font-size:0.14rem
 }
 .open img{
     width:0.5rem;
@@ -211,5 +218,22 @@ export default {
     line-height: 0.5rem;
     border-radius: 0.5rem;
     color: #fff;
+}
+.loglog {
+  position: relative;
+  overflow: hidden;
+}
+.log {
+  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_logo_f90f028.png)
+    no-repeat center;
+  background-size: 1.6rem 0.4rem;
+  width: 100%;
+  height: 2rem;
+  position: absolute;
+}
+.log_2 {
+  height: 2.94rem;
+  background: url(//s1.xmcdn.com/yx/ximalaya-mobile-resource/last/dist/images/footer_bg_2b1fa03.png)
+    no-repeat center;
 }
 </style>

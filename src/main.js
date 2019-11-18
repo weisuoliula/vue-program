@@ -7,6 +7,7 @@ import store from './store'
 import "@common/components"
 
 import { Swipe, SwipeItem } from 'vant';
+
 Vue.use(Swipe).use(SwipeItem);
 
 import { Sidebar, SidebarItem } from 'vant';

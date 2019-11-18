@@ -61,10 +61,11 @@ export const  xiangtingtwo =(anchorId)=>http({
  */
 export const  datail =(anchorId)=>http({
         method:"get",
-        url:"/api/m-revision/common/track/queryTrackCommentsFirstPage?trackId=228337593&pageSize=10&page=1",
+        url:"/api/mobile/v1/track/share/content?trackId="+anchorId+"&tpName=weixin&device=h5",
         data:{
         }
 })
+
 /**
  * 登陆
  */
@@ -84,6 +85,18 @@ export const  register =(username,password)=>http({
         url: "http://localhost:3000/data",
         data:{
                 username:username,
-                password:password
+                password:password,
+        }
+})
+/**
+ * 向购物车添数据
+ */
+export const  shopping =(datail,datails)=>http({
+        method: "POST",
+        url: "http://localhost:3000/good",
+        data:{
+                img:datail,
+                price:datails,
+                num:1
         }
 })
