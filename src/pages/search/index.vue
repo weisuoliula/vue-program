@@ -120,7 +120,6 @@ export default {
           this.flag1 = 1;
         }
       }, 300);
-
       //console.log(this.listfadelist)
     }
   },
