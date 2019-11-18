@@ -42,15 +42,15 @@ const router=new VueRouter({
     ]
 })
 
-/**
- * 全局路由守卫，去购物车需登录
- */
+
+//全局路由守卫，去购物车需登录
+
 router.beforeEach((to,from,next)=>{
   if(to.path !="/login" && to.meta.requiredAuth){
+    next({name:"login",params:{to:to.path}})
     if(localStorage.getItem("token")){
       next();
     }else{
-      next({name:"login",params:{to:to.path}})
     }
   }else{
     next()

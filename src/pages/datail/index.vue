@@ -161,8 +161,8 @@ export default {
 }
 .iconfont.iconbofang {
   position: absolute;
-  top: 115px;
-  left: 164px;
+  top: 0.9rem;
+  left: 1.4rem;
   z-index: 1;
   font-size: 0.5rem;
   color: #fff;

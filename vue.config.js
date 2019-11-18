@@ -9,7 +9,14 @@ module.exports = {
                     pathRewrite: {
                         "^/api/":""
                     } 
-                } 
+                } ,
+               /*  "/pracusers": {
+                    target: "http://localhost:3000",
+                    changeOrigin: true,
+                    pathRewrite: {
+                        "^/api/":""
+                    } 
+                } */
             }
         },
         //别名配置

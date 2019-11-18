@@ -167,7 +167,10 @@ html {
 .allbox {
   height: 100%;
 }
-
+html,body{
+  height: 100%;
+  overflow: hidden;
+}
 .nav1 {
   width: 100%;
   height: 0.34rem;

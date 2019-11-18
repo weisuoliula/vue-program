@@ -33,6 +33,7 @@ export const searchrecommendapi=(kw)=>http({
     }
 //https://m.ximalaya.com/revision/suggest?kw=g&paidFilter=false&scope=all
 })
+//分类接口
 export const classifyapi=(kw)=>http({
     method:'get',
     url:"/api/m-revision/page/category/queryCategories",

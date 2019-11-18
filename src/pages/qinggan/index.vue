@@ -1,15 +1,16 @@
 <template>
   <div class="qinggan">
-     <div class="header">
+     <!-- <div class="header">
         <b>喜马拉雅</b>
         <div class="header_input">
             <div class="iconfont iconsousuo"></div>
             <input type="text" value="" id="search_input" placeholder="搜索">
         </div>
         <span>打开App</span>
-    </div>
-    
+    </div> -->
+   
     <div class="nav">
+         <Header/>
         <ul>
             <a href="javascript:void(0)">推荐</a>
             <a href="javascript:void(0)">情感</a>
@@ -40,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.header{
+/* .header{
     height:0.5rem;
     display: flex;
     align-items: center;
@@ -87,13 +88,13 @@ export default {
 }
 .iconfont.iconsousuo{
     font-size:0.2rem;
-}
+} */
 
 .nav{
     height:0.45rem;
     background: #fff;
     position: fixed;
-    top:0.5rem;
+    /* top:0.5rem; */
     left:0;
     z-index: 1;
     width:100%;
@@ -104,6 +105,7 @@ export default {
     line-height:0.4rem;
     overflow-x: auto;
     white-space: nowrap;
+    background: #fff;
 }
 .nav ul a{
     display: block;
