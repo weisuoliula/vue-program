@@ -6,13 +6,15 @@
         <img src="http://imagev2.xmcdn.com/group61/M0A/CD/B2/wKgMZl0W1legiUgkAACPrBBFcJ4381.png" />
       </div>
     </div>
-    <div class="list" v-for="(item,index) in soundBook_list" :key="index">
-      <div class="nav3">
-        <p>{{item.moduleInfo.displayName}}</p>
-        <span>更多 ></span>
-      </div>
-      <div>
-        <!-- <div class="list_top" v-for="(item,index) in top" :key="index">
+    <Alley-scroll ref="scroll">
+      <div class="scroll_con">
+        <div class="nav3">
+          <p>有声书</p>
+          <span>更多>></span>
+        </div>
+        <div class="list" v-for="(item,index) in soundBook_list" :key="index">
+          <div>
+            <!-- <div class="list_top" v-for="(item,index) in top" :key="index">
           <figure>
             <img
               :src="'http://imagev2.xmcdn.com/'+item.albumInfo.cover+'!op_type=3&columns=144&rows=144&magick=webp'"
@@ -20,21 +22,23 @@
             />
             <figcaption>{{item.albumInfo.title}}</figcaption>
           </figure>
-        </div> -->
-        <div class="listone"  v-for="(item,index) in item.albumBriefDetailInfos" :key="index">
-          <img
-            :src="'http://imagev2.xmcdn.com/'+item.albumInfo.cover+'!op_type=3&columns=144&rows=144&magick=webp'"
-            alt
-          />
-          <div>
-            <h3>{{item.albumInfo.title}}</h3>
-            <p>{{item.albumInfo.salePoint}}</p>
-            <span class="iconfont iconerji">{{item.statCountInfo.trackCount}}</span>
-            <span class="iconfont iconerji">{{item.statCountInfo.playCount}}</span>
+            </div>-->
+            <div class="listone">
+              <img
+                :src="'http://imagev2.xmcdn.com/'+item.data.albumInfo.cover+'!op_type=3&columns=144&rows=144&magick=webp'"
+                alt
+              />
+              <div>
+                <h3>{{item.data.albumInfo.title}}</h3>
+                <p>{{item.data.albumInfo.salePoint}}</p>
+                <span class="iconfont iconerji">{{item.data.statCountInfo.trackCount}}</span>
+                <span class="iconfont iconerji">{{item.data.statCountInfo.playCount}}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Alley-scroll>
   </div>
 </template>
 
@@ -48,11 +52,14 @@ export default {
   },
   data() {
     return {
-      soundBook_list: [],
-      top:[],
-      bottom:[],
-      totlList:[]
+      soundBook_list: []
     };
+  },
+  watch: {
+    soundBook_list() {
+      this.$refs.scroll.handlefinishPullDown();
+      this.$refs.scroll.handlefinishPullUp();
+    }
   },
   created() {
     this.soundBooklist();
@@ -60,16 +67,16 @@ export default {
   methods: {
     async soundBooklist() {
       let data = await soundbookrecommendapi();
-      this.soundBook_list = data.data.moduleContent.moduleRankDatas;
-     /*  this.totlList = this.soundBook_list.albumBriefDetailInfos;
-      for(var i=0;i<this.totlList.length-3;i++){
-          this.top.push(this.totlList[i])
-      }
-      for(var j=3;j<this.totlList.length-1;j++){
-          this.bottom.push(this.totlList[j])
-      } */
-      //console.log(this.tuijian_list);
+      this.soundBook_list = data.data.materials;
     }
+  },
+  mounted() {
+    this.$refs.scroll.handlepullingDown(() => {
+      this.soundBooklist();
+    });
+    this.$refs.scroll.handlepullingUp(() => {
+      this.soundBooklist();
+    });
   }
 };
 </script>
@@ -98,12 +105,11 @@ export default {
 }
 .main .list {
   width: 100%;
-  padding: 0.15rem;
+  padding: 0.08rem;
 }
 .main .list .list_top {
   width: 2.9rem;
   height: 1.44rem;
-  margin-top: 0.2rem;
   display: flex;
   justify-content: space-around;
 }
@@ -124,19 +130,20 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.main .list .nav3 {
+.main .nav3 {
   height: 0.24rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0.15rem;
 }
 
-.main .list .nav3 > p {
+.main .nav3 > p {
   font-size: 0.18rem;
   font-weight: 600;
 }
 
-.main .list .nav3 > span {
+.main .nav3 > span {
   font-size: 0.12rem;
   color: #72727b;
 }
@@ -172,7 +179,6 @@ export default {
   color: #999;
   font-size: 0.13rem;
   margin: 0.05rem 0 0.07rem;
-
 }
 
 .main .list .listone > div > span {

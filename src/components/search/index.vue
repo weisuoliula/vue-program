@@ -1,9 +1,9 @@
 <template>
   <ul class="search_con">
-    <li v-for="(item,index) in listHot" :key="index">
+    <router-link tag="li" to="/all" v-for="(item,index) in listHot" :key="index">
       <span>{{index+1}}</span>
       <span>{{item.word}}</span>
-    </li>
+    </router-link>
   </ul>
 </template>
 

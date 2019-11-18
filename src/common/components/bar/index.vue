@@ -16,10 +16,10 @@
         <img src="http://fdfs.xmcdn.com/group56/M09/3B/BD/wKgLgFyQujLCAVYRAAAuwA7DZMg198.png" alt />
         <figcaption>直播</figcaption>
       </figure>
-      <figure>
+      <router-link to="/classify" tag="figure">
         <img src="http://fdfs.xmcdn.com/group60/M02/18/F4/wKgLeVziZxHRlc-lAAAO9ZkPU-I489.png" alt />
         <figcaption>分类</figcaption>
-      </figure>
+      </router-link>
     </div>
  
 </template>

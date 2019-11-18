@@ -2,12 +2,16 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import tuijian_ from "./tuijian";
 import search from "./search";
+import classify from "./classify";
+import all from "./all";
+
 
 import qinggan from './qinggan'
 import shenghuo from './shenghuo'
 import xiangting from './xiangting'
 import datail from './datail'
 import shopping from "./shopping";
+
 Vue.use(VueRouter);
 const router=new VueRouter({
     mode:"hash",
@@ -23,6 +27,8 @@ const router=new VueRouter({
         xiangting,
         datail,
         shopping,
+        classify,
+        all,
         {
           path:"/login",
           component:_=>import("@pages/login"),//_代表当前函数不传参数,()传参

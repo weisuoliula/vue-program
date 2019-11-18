@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { soundbookrecommendapi } from "@api/recommend";
+import { soundbook1recommendapi } from "@api/recommend";
 export default {
   name: "Bar",
   data() {
@@ -44,16 +44,16 @@ export default {
   },
   //https://m.ximalaya.com/m-revision/page/index/queryIndexCategoryTabContent?moduleKey=youshengshu
   created() {
-    this.sounBookimg();
+    this.soundBookimg();
   },
   methods: {
     onChange(index) {
       this.current = index;
     },
-    async sounBookimg() {
-      let data = await soundbookrecommendapi();
+    async soundBookimg() {
+      let data = await soundbook1recommendapi();
       this.tuijian_list = data.data.moduleContent.focusImages;
-      //console.log(this.tuijian_list);
+     // console.log(this.tuijian_list);
     }
   }
 };

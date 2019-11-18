@@ -27,7 +27,7 @@
     <div v-show="flag1">
       <div class="nav11">
         <p>搜索历史</p>
-        <i class="iconfont iconshanchu"></i>
+        <v-touch class="iconfont iconshanchu" @tap="deleteHistory()"></v-touch>
       </div>
       <div class="search_history">
         <p v-for="(item,index) in record" :key="index">{{item}}</p>
@@ -114,7 +114,7 @@ export default {
         }
         this.listfade = data.data.result.albumResultList[0];
         this.listfadelist = data.data.result.queryResultList;
-        if (data.data.result.albumResultList == "") {
+        if (this.value == "") {
           this.listfade = [];
           this.flag = 0;
           this.flag1 = 1;
@@ -131,7 +131,11 @@ export default {
     },
     submit() {
       this.record.push(this.value);
+      
       //console.log(this.record)
+    },
+    deleteHistory(){
+        this.record=[];
     }
   }
 };
@@ -284,14 +288,8 @@ export default {
   padding: 0.07rem;
   color: #72727b;
 }
-
-.nav2 > li:nth-of-type(1) {
-  font-size: 0.18rem;
-  color: #000;
-}
-
-.active {
-  font-size: 0.18rem;
-  color: #000;
+.nav2 .router-link-active {
+  font-size: 0.16rem;
+  border-bottom: 0.02rem solid #c33;
 }
 </style>

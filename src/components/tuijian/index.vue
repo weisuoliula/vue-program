@@ -74,8 +74,7 @@ export default {
    });
   }
 };
-//group62/M08/57/04/wKgMZ1z7asCSSAR8AAFp44juMnc336.jpg
-////imagev2.xmcdn.com/group62/M08/57/04/wKgMZ1z7asCSSAR8AAFp44juMnc336.jpg!op_type=3&columns=144&rows=144&magick=webp
+
 </script>
 
 <style scoped>

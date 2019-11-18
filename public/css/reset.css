@@ -36,17 +36,21 @@ option {
 html {
     font-family: "微软雅黑";
     font-size: 31.25vw;
-    height: 100%;
 }
 
+html,
 body {
     width: 100%;
     height: 100%;
-   /*  display: flex;
-    flex-direction: column; */
-    -overflow: hidden;
+    /*  display: flex;
+    flex-direction: column;
+     */
+    overflow: hidden;
 }
 
+#app {
+    height: 100%;
+}
 
 h1,
 h2,

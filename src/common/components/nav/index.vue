@@ -107,7 +107,8 @@ export default {
   color: #72727b;
 }
 .nav11 .router-link-active {
-  font-size: 0.18rem;
+  font-size: 0.16rem;
+  border-bottom: 0.02rem solid #c33;
 }
 
 </style>

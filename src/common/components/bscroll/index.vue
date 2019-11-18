@@ -25,7 +25,7 @@ export default {
       //开启下拉刷新
      pullDownRefresh:true,
       //开启上拉加载更多
-     // pullUpLoad: true,
+      pullUpLoad: true,
    });
       /* pullDownRefresh: {
         threshold:30
@@ -38,17 +38,17 @@ export default {
     } */
   },
   methods: {
-    handleScrollTo(y){
+   /*  handleScrollTo(y){
       this.scroll.scrollTo(0,y,300)
-    },
+    }, */
     handleScroll(){
         this.scroll.on("scroll",this.handleScrollCb)
     },
-    handleScrollCb({y}){
+    /* handleScrollCb({y}){
       if(y>=30){
             this.loadingFlag = true;
         }
-    },
+    }, */
     //下拉刷新
     handlepullingDown(callback) {
       this.scroll.on("pullingDown", () => {
@@ -65,7 +65,7 @@ export default {
         },500)
     },
     //上拉加载更多
-    /* handlepullingUp(callback){
+    handlepullingUp(callback){
       this.scroll.on('pullingUp',()=>{
           callback();
       })
@@ -75,7 +75,7 @@ export default {
       this.scroll.finishPullUp();
       //重新计算better-scroll
       this.scroll.refresh();
-    } */
+    }
   }
 };
 </script>
